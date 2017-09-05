@@ -7,18 +7,17 @@ class School(models.Model):
     name = models.CharField(max_length=50)
     principal=models.CharField(max_length=30)
     def __unicode__(self):
-   	    return self.name
+        return self.name
     
     @classmethod
     def create(cls, school_id,name,principal):
         sch= cls(school_id=school_id,name=name,principal=principal)
         return sch
-
-	def sch_stu(self):
-   	    return self.student_set 
+    def sch_stu(self):
+        return self.student_set 
 
     def sch_teacher(self):
-   	    return self.teacher_set 
+        return self.teacher_set 
 
 schools=School.create(00001,"zhongxue","tianwei")
 
@@ -28,15 +27,15 @@ class Class(models.Model):
     grade = models.CharField(max_length=50)
     school_class=models.ForeignKey(School)
     def __unicode__(self):
-   	    return self.name
+        return self.name
     
 class Teacher(models.Model):
     teacher_id=models.CharField(max_length=30)    
     name = models.CharField(max_length=50)
-	class_teacher=models.ManyToManyField(Class)
-	school_teacher=models.ForeignKey(School) 
-	def __unicode__(self):
-   	    return self.name   
+    class_teacher=models.ManyToManyField(Class)
+    school_teacher=models.ForeignKey(School) 
+    def __unicode__(self):
+        return self.name   
 
 class Student(models.Model):
     student_id = models.CharField(max_length=30) 
