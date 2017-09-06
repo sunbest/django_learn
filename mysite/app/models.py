@@ -33,11 +33,11 @@ principal=[principal for principal in row_three]
 d=zip(ID,name,principal)
 id_list= School.objects.values_list('school_id',flat=1)
 for id_lists in id_list:
-	for school in d:
-		if id_lists in ID:
-			pass
-		else:
-        	School.create(*school)
+    for school in d:
+        if id_lists in ID:
+            pass
+        else:
+            School.create(*school)
 
 class Class(models.Model):
     class_id = models.CharField(max_length=30)
